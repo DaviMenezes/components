@@ -1,0 +1,15 @@
+{
+	"name": "dvi/components",
+	"description": "Components for Dvi Framework",
+	"type":"library",
+	"authors": [ {
+		"name": "Davi Menezes",
+		    "email": "davimenezes.dev@gmail.com"
+	}],
+	"autoload": {
+		"psr-4" : {
+			"Dvi\\Components\\" : "/src"
+		},
+		"classmap": ["/src"]
+	}
+}
