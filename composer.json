@@ -1,6 +1,6 @@
 {
 	"name": "dvi/components",
-	"description": "Components for Dvi Framework",
+	"description": "Components for Dvi Project",
 	"type":"library",
 	"authors": [ {
 		"name": "Davi Menezes",
