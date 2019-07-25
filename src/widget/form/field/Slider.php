@@ -3,7 +3,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TSlider;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Field Slider
@@ -17,7 +17,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class Slider extends TSlider implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct(string $name, $min, $max, $step = 1, $label = null)

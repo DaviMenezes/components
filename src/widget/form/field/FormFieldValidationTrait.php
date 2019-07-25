@@ -14,7 +14,7 @@ use Dvi\Adianti\Widget\Form\Field\Validator\FieldValidator;
  * @copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-trait FormFieldValidation
+trait FormFieldValidationTrait
 {
     public function addValidations(array $array_validations)
     {

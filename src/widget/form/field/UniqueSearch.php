@@ -4,7 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TUniqueSearch;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Field UniqueSearch
@@ -19,7 +19,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class UniqueSearch extends TUniqueSearch implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
     use SelectionFieldTrait;
 

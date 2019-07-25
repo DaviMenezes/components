@@ -4,7 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\THtmlEditor;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Lib\Widget\Base\Script;
 
 /**
@@ -19,7 +19,7 @@ use Dvi\Lib\Widget\Base\Script;
 class HtmlEditor extends THtmlEditor implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct(string $name, int $height, $label, bool $required = false)

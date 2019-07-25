@@ -15,7 +15,7 @@ use Adianti\Base\Lib\Widget\Form\TPassword;
  */
 class Password extends TPassword
 {
-    use FormField;
+    use FormFieldTrait;
 
     public function __construct(string $name, int $max_length, string $label = null, bool $required = false)
     {

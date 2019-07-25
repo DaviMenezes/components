@@ -4,7 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TDate;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Adianti\Widget\Form\Field\Validator\DateValidator;
 
 /**
@@ -18,7 +18,7 @@ use Dvi\Adianti\Widget\Form\Field\Validator\DateValidator;
 class Date extends TDate implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     protected $field_disabled;

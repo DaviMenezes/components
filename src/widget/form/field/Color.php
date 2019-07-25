@@ -3,7 +3,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TColor;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Field Color
@@ -17,7 +17,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class Color extends TColor implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct(string $name, string $label = null, int $max_length = 10, $required = false)

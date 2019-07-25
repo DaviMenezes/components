@@ -1,12 +1,15 @@
 <?php
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TEntry;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Adianti\Widget\Form\Field\SearchableField;
+use Dvi\Support\View\View;
 use Exception;
 
 /**
@@ -20,14 +23,14 @@ use Exception;
 class Varchar extends TEntry implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct(string $name, string $label = null, int $max_length = null, bool $required = false)
     {
         parent::__construct($name);
 
-        $this->setup($label ?? $name, $required, $max_length);
+        $this->setup($label ?? '', $required, $max_length);
 
         $this->operator('like');
     }
@@ -39,7 +42,7 @@ class Varchar extends TEntry implements FormField
         $data['label'] = $this->error_msg ? 'verifique' : $this->getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
-        view("form/fields/varchar", $data);
+        echo View::run("/widget/form/field/Varchar/View/varchar.blade.php", $data);
     }
 
     protected function getViewData()

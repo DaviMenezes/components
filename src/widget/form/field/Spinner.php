@@ -4,7 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TSpinner;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Form Spinner
@@ -18,7 +18,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class Spinner extends TSpinner implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct(string $name, int $min, int $max, int $step, $label = null, bool $required = false)

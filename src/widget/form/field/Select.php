@@ -4,7 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TSelect;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Field Select
@@ -18,7 +18,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class Select extends TSelect implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
     use SelectionFieldTrait;
 

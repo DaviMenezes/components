@@ -15,7 +15,7 @@ use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeString;
  */
 class Hidden extends THidden
 {
-    use FormField;
+    use FormFieldTrait;
 
     public function __construct(string $name, $default_value = null)
     {

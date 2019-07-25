@@ -9,6 +9,8 @@ use Dvi\Adianti\Widget\Form\Field\Validator\MaxLengthValidator;
 use Dvi\Adianti\Widget\Form\Field\Validator\RequiredValidator;
 use Dvi\Adianti\Widget\Util\Action;
 use Dvi\Adianti\Widget\Util\ActionLink;
+use Dvi\Component\Widget\Form\Field\Combo\Combo;
+use Dvi\Component\Widget\Form\Field\Varchar;
 
 /**
  * Field DField
@@ -19,7 +21,7 @@ use Dvi\Adianti\Widget\Util\ActionLink;
  * @copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-trait FormField
+trait FormFieldTrait
 {
     /**@var \App\Http\Request*/
     protected $request;
@@ -35,6 +37,7 @@ trait FormField
     protected $max_length;
     protected $field_label;
     protected $use_label_field;
+    protected $placeholder;
 
     public function setup(string $label, bool $required = false, int $max_length = null)
     {
@@ -50,7 +53,7 @@ trait FormField
         return $this;
     }
 
-    public function tip(bool $tip)
+    public function useTip(bool $tip)
     {
         $this->tip = $tip;
     }
@@ -186,7 +189,7 @@ trait FormField
     protected function getFieldInfoValidationErrorData(string $label = null)
     {
         $field_info = null;
-        if (in_array(FormFieldValidation::class, array_keys((new \ReflectionClass(self::class))->getTraits()))) {
+        if (in_array(FormFieldValidationTrait::class, array_keys((new \ReflectionClass(self::class))->getTraits()))) {
             if ($this->error_msg) {
                 $this->setErrorValidationSession();
                 $parameters = ['field' => $this->getName(), 'form' => $this->getFormName()];
@@ -233,5 +236,10 @@ trait FormField
 //            return;
 //        }
         parent::show();
+    }
+
+    public function placeholder(string $text)
+    {
+        $this->placeholder = $text;
     }
 }

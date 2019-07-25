@@ -56,7 +56,7 @@ class PanelGroup implements IDviWidget
     {
         $this->route_name = $route;
 
-        $form_name =  Router::getShortClassNameByRoute($route). '_'.($formName ?? uniqid());
+        $form_name =  str(get_called_class())->lastStr('\\')->str(). '_'.($formName ?? uniqid());
         $this->form = new TForm((string)$form_name);
         $this->form->class = 'form-horizontal';
         $this->form->add($this->getGrid());

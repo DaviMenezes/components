@@ -7,8 +7,8 @@ use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Adianti\Base\Lib\Widget\Form\TNumeric;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
-use Dvi\Adianti\Widget\Form\Field\FormFieldValidation;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldValidationTrait;
 use Dvi\Adianti\Widget\Form\Field\SearchableField;
 use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeFloat;
 use Exception;
@@ -25,7 +25,7 @@ use Exception;
 class Numeric extends TNumeric implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct($name, $decimals, $decimalsSeparator, $thousandSeparator, $required = false, string $label = null, bool $replaceOnPost = true)

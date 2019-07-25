@@ -5,7 +5,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 use Adianti\Base\App\Lib\Validator\TDateValidator;
 use Adianti\Base\Lib\Widget\Form\TDateTime;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Fields DateTime
@@ -19,7 +19,7 @@ use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
 class DateTime extends TDateTime implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
 
     public function __construct($name, $label = null, $required = false)
