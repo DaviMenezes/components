@@ -36,7 +36,7 @@ class Button extends TField implements AdiantiWidgetInterface
 
     public function __construct(string $name = null)
     {
-        parent::__construct($name ?? 'btn_'.GUID::getID());
+        parent::__construct($name ?? uniqid('btn_'));
 
         $this->setClass();
     }
