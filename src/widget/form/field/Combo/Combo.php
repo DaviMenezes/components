@@ -1,13 +1,17 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field\Combo;
 
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TCombo;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormField as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Adianti\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Adianti\Widget\Form\Field\SearchableField;
+use Dvi\Adianti\Widget\Form\Field\SelectionFieldTrait;
+use Dvi\Support\View\View;
 use Exception;
 
 /**
@@ -21,7 +25,7 @@ use Exception;
 class Combo extends TCombo implements FormField
 {
     use FormFieldTrait;
-    use FormFieldValidation;
+    use FormFieldValidationTrait;
     use SearchableField;
     use SelectionFieldTrait;
 
@@ -32,7 +36,7 @@ class Combo extends TCombo implements FormField
         parent::__construct($name);
 
         $this->setup($label ?? $name, $required);
-        $this->tip(false);
+        $this->useTip(false);
         $this->operator('=');
 
         if ($obj_array_value) {
@@ -63,11 +67,12 @@ class Combo extends TCombo implements FormField
 
     protected function getTextPlaceholder()
     {
-        $placeholder =  strtolower(AdiantiCoreTranslator::translate('Select') . ' '. $this->field_label);
-        if ($this->isRequired()) {
-            $placeholder = '<span style="color: #d9534f">'.$placeholder.'</span>';
+        if (!isset($this->placeholder)) {
+            return null;
         }
-        return $placeholder;
+        if ($this->isRequired()) {
+            return '<span style="color: #d9534f">' . $this->placeholder . '</span>';
+        }
     }
 
     public function showView()
@@ -126,7 +131,7 @@ class Combo extends TCombo implements FormField
             'options_properties' => []
         ];
 
-        view('form/fields/combo', $params);
+        echo View::run("/widget/form/field/Combo/View/view.blade.php", $params);
 
         if ($this->searchable) {
             $select = $this->getTextPlaceholder();
