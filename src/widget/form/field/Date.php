@@ -1,4 +1,5 @@
 <?php
+
 namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Base\TScript;
@@ -54,11 +55,9 @@ class Date extends TDate implements FormField
         $language = strtolower(LANG);
         $options = json_encode($this->options);
 
-        if (parent::getEditable())
-        {
+        if (parent::getEditable()) {
             $outer_size = 'undefined';
-            if (strstr($this->size, '%') !== FALSE)
-            {
+            if (strstr($this->size, '%') !== false) {
                 $outer_size = $this->size;
                 $this->size = '100%';
             }
