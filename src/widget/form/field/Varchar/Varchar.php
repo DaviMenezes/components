@@ -39,10 +39,12 @@ class Varchar extends TEntry implements FormField
     {
         $data = $this->getViewData();
 
-        $data['label'] = $this->error_msg ? 'verifique' : $this->getLabel();
+        $data['has_error'] = $this->error_msg ? true : false;
+        $data['label'] = $this->getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
-        echo View::run("/widget/form/field/Varchar/View/varchar.blade.php", $data);
+        $file = 'widget/form/field/Varchar/View/varchar.blade.php';
+        echo View::run($file, $data);
     }
 
     protected function getViewData()
