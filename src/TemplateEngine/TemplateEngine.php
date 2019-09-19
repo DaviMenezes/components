@@ -6,8 +6,8 @@ use Dvi\Component\TemplateEngine\Contract\TemplateEngineInterface;
 
 class TemplateEngine
 {
-    /**@param \Dvi\Component\TemplateEngine\Contract\TemplateEngineInterface|string $class
-     * @return \Dvi\Component\TemplateEngine\Contract\TemplateEngineInterface
+    /**@param TemplateEngineInterface|string $class
+     * @return TemplateEngineInterface
      */
     public static function instance(string $class)
     {
