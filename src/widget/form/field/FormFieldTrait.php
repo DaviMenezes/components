@@ -2,15 +2,11 @@
 
 namespace Dvi\Adianti\Widget\Form\Field;
 
-use App\Http\Request;
 use Dvi\Adianti\Widget\Container\VBox;
 use Dvi\Adianti\Widget\Form\Field\Contract\FieldTypeInterface;
 use Dvi\Adianti\Widget\Form\Field\Validator\MaxLengthValidator;
 use Dvi\Adianti\Widget\Form\Field\Validator\RequiredValidator;
-use Dvi\Adianti\Widget\Util\Action;
-use Dvi\Adianti\Widget\Util\ActionLink;
-use Dvi\Component\Widget\Form\Field\Combo\Combo;
-use Dvi\Component\Widget\Form\Field\Varchar;
+use Dvi\Support\Http\Request;
 
 /**
  * Field DField
@@ -23,7 +19,7 @@ use Dvi\Component\Widget\Form\Field\Varchar;
  */
 trait FormFieldTrait
 {
-    /**@var \App\Http\Request*/
+    /**@var Request*/
     protected $request;
     protected $field_disabled;
     /**@var FieldTypeInterface */
@@ -194,13 +190,16 @@ trait FormFieldTrait
                 $this->setErrorValidationSession();
                 $parameters = ['field' => $this->getName(), 'form' => $this->getFormName()];
 
-                $route_base = Request::instance()->attr('route_base');
-                $route = urlRoute($route_base.'/show_error', $parameters);
-                $route .= '&static=1';
+                if (USE_ROUTE) {
+                    $route_base = http()->attr('route_base');
+                    $route = urlRoute($route_base.'/show_error', $parameters);
+                    $route .= '&static=1';
 
-                $field_info['route'] = $route;
+                    $field_info['route'] = $route;
+                    $field_info['title'] = 'Clique para ver a mensagem';
+                }
+                $field_info['msg'] = implode("<br>", $this->error_msg);
                 $field_info['label'] = $label;
-                $field_info['title'] = 'Clique para ver a mensagem';
             }
         }
         return $field_info;
