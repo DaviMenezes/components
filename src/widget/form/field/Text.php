@@ -7,6 +7,7 @@ use Adianti\Base\Lib\Widget\Form\TForm;
 use Adianti\Base\Lib\Widget\Form\TText;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
 use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Support\View\View;
 use Exception;
 
 /**
@@ -108,6 +109,8 @@ class Text extends TText implements FormField
             'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel())
         ];
 
-        view('form/fields/text', $params);
+        $file = 'widget/form/field/Text/View/text.blade.php';
+        echo View::run($file, $params);
+//        view('form/fields/text', $params);
     }
 }
