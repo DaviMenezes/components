@@ -52,11 +52,11 @@ trait FormFieldValidationTrait
                 $validator = $validation[1];
                 $parameters = $validation[2] ?? [];
 
-                $parameters['request'] = func_get_arg(0);
+                $parameters['request'] = func_num_args() != -1 ? func_get_arg(0) : false;
 
                 /**@var FieldValidator $validator */
                 if (!$validator->validate($label, $this->getValue(), $parameters)) {
-                    $this->addErrorMessage($validator->getErrorMsg());
+                    $this->addErrorMessage($label .': '. $validator->getErrorMsg());
                 }
             }
         }
@@ -107,5 +107,10 @@ trait FormFieldValidationTrait
     public function addErrorMessage($msg)
     {
         $this->error_msg[] = $msg;
+    }
+
+    public function getErrorMessage()
+    {
+        return $this->error_msg;
     }
 }
