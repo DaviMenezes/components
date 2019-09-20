@@ -4,6 +4,7 @@ namespace Dvi\Adianti\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\THidden;
 use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeString;
+use Dvi\Support\View\View;
 
 /**
  * Form Hidden
@@ -16,6 +17,7 @@ use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeString;
 class Hidden extends THidden
 {
     use FormFieldTrait;
+    use FormFieldValidationTrait;
 
     public function __construct(string $name, $default_value = null)
     {
@@ -53,8 +55,11 @@ class Hidden extends THidden
             'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel()),
             'properties' => $data
         ];
-        view("form/fields/hidden", $params);
+        $this->view($params);
     }
 
-
+    protected function view($data)
+    {
+        echo View::run("widget/form/field/Hidden/View/hidden.blade.php", $data);
+    }
 }
