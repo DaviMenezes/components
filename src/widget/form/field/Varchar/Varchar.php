@@ -40,7 +40,7 @@ class Varchar extends TEntry implements FormField
         $data = $this->getViewData();
 
         $data['has_error'] = $this->error_msg ? true : false;
-        $data['label'] = $this->getLabel();
+        $data['label'] = parent::getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
         $file = 'widget/form/field/Varchar/View/varchar.blade.php';
