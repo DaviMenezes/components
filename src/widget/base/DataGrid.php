@@ -5,7 +5,7 @@ use Adianti\Base\Lib\Registry\TSession;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Datagrid\TDataGrid;
 use Adianti\Base\Lib\Widget\Datagrid\TDataGridAction;
-use App\Http\Request;
+use Dvi\Support\Http\Request;
 use App\Http\Router;
 use ReflectionClass;
 
