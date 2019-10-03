@@ -2,10 +2,7 @@
 
 namespace Dvi\Support\View;
 
-use Dvi\Component\TemplateEngine\BladeOneInstance;
-use Dvi\Component\TemplateEngine\TemplateEngine;
 use Dvi\Component\TemplateEngine\TemplateManager;
-use eftec\bladeone\BladeOne;
 
 class View
 {
