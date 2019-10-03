@@ -34,6 +34,6 @@ class HtmlEditor extends THtmlEditor implements FormField
     public function show()
     {
         parent::show();
-        Script::add('remove_note-popover', ' $(".note-popover").remove();');
+//        Script::add('remove_note-popover', ' $(".note-popover").remove();');
     }
 }
