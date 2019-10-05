@@ -65,7 +65,7 @@ class Date extends TDate implements FormField
 
         $data = $this->getViewData();
 
-        $data['label'] = $this->error_msg ? 'verifique' : $this->getLabel();
+        $data['label'] = parent::getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
         $data['editable'] = parent::getEditable();
         $data['mask'] = $this->mask ?? 'dd/mm/yyyy';
@@ -74,6 +74,6 @@ class Date extends TDate implements FormField
         $data['options'] = $options;
         $data['error_msg'] = $this->error_msg;
 
-        view('form/fields/date', $data);
+        view('widget/form/field/Date/View/date.blade.php', $data);
     }
 }
