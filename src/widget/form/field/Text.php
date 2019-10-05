@@ -109,7 +109,7 @@ class Text extends TText implements FormField
             'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel())
         ];
 
-        $file = 'widget/form/field/Text/View/text.blade.php';
+        $file = 'Widget/Form/Field/Text/View/text.blade.php';
         view($file, $params);
     }
 }
