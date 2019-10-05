@@ -105,12 +105,11 @@ class Text extends TText implements FormField
         $params = [
             'properties' => $properties,
             'value' => $this->value ?? null,
-            'label' => $this->error_msg ? $this->wrapperStringClass('verifique') : $this->getLabel(),
+            'label' => parent::getLabel(),
             'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel())
         ];
 
         $file = 'widget/form/field/Text/View/text.blade.php';
-        echo View::run($file, $params);
-//        view('form/fields/text', $params);
+        view($file, $params);
     }
 }
