@@ -51,6 +51,13 @@ class Date extends TDate implements FormField
 
     public function showView()
     {
+        $data = $this->getViewData();
+
+        view('Widget/Form/Field/Date/View/date.blade.php', $data);
+    }
+
+    protected function getViewData()
+    {
         $js_mask = str_replace('yyyy', 'yy', $this->mask);
         $language = strtolower(LANG);
         $options = json_encode($this->options);
@@ -63,8 +70,7 @@ class Date extends TDate implements FormField
             }
         }
 
-        $data = $this->getViewData();
-
+        $data = parent::getViewData();
         $data['label'] = parent::getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
         $data['editable'] = parent::getEditable();
@@ -73,7 +79,5 @@ class Date extends TDate implements FormField
         $data['outer_size'] = $outer_size;
         $data['options'] = $options;
         $data['error_msg'] = $this->error_msg;
-
-        view('widget/form/field/Date/View/date.blade.php', $data);
     }
 }
