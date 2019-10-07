@@ -159,7 +159,6 @@ trait FormFieldTrait
             $this->prepare();
 
             if (!$this->use_label_field) {
-
                 $this->showField();
                 return;
             }
@@ -167,17 +166,10 @@ trait FormFieldTrait
             $vbox = new VBox();
 
             if ($this->error_msg) {
-
                 $this->showField();
-//Todo analisar e remover qdo terminar processo de troca de componentes
-                //                $label =  $this->wrapperStringClass('verifique');
-//                $vbox->add($this->getValidationErrorLink($label));
-//                $vbox->show();
                 return;
             }
-//            $vbox->add($this->getLabel());
             $vbox->show();
-//            $this->showField();
             parent::show();
         } catch (\Exception $e) {
             throw new \Exception('Houve um problema na construção do campo '. $this->getName());

@@ -6,7 +6,7 @@
     <script language="JavaScript">tentry_new_mask('{{$id}}', {{$mask}}); </script>
 @endif
 
-@include('widget.form.field.base.label')
+@include('Widget.Form.Field.Base.label')
 
 <input {!! $properties !!}>
 

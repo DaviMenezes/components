@@ -80,5 +80,6 @@ class Date extends TDate implements FormField
         $data['outer_size'] = $outer_size;
         $data['options'] = $options;
         $data['error_msg'] = $this->error_msg;
+        return $data;
     }
 }

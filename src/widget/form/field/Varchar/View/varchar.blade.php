@@ -2,6 +2,6 @@
 {{--@copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)--}}
 {{--@see https://github.com/DaviMenezes--}}
 
-@include('widget.form.field.Base.label')
+@include('Widget.Form.Field.Base.label')
 <input {!!$properties!!} style="height: 32px"/>
-@include('widget.form.field.Base.field_info')
+@include('Widget.Form.Field.Base.field_info')
