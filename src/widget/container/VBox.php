@@ -3,7 +3,7 @@ namespace Dvi\Component\Widget\Container;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Container\TVBox;
-use Dvi\Adianti\Widget\IGroupField;
+use Dvi\Component\Widget\IGroupField;
 
 /**
  * Coluna bootstraps

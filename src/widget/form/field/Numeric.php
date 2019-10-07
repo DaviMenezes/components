@@ -9,8 +9,8 @@ use Adianti\Base\Lib\Widget\Form\TNumeric;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
-use Dvi\Adianti\Widget\Form\Field\SearchableField;
-use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeFloat;
+use Dvi\Component\Widget\Form\Field\SearchableField;
+use Dvi\Component\Widget\Form\Field\Type\FieldTypeFloat;
 use Exception;
 
 /**

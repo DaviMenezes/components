@@ -2,7 +2,7 @@
 
 namespace Dvi\Component\Widget\Base;
 
-use Dvi\Adianti\Widget\IGroupField;
+use Dvi\Component\Widget\IGroupField;
 
 /**
  * Component GroupField

@@ -2,7 +2,7 @@
 
 namespace Dvi\Component\Widget\Form\Field\Type;
 
-use Dvi\Adianti\Widget\Form\Field\Contract\FieldTypeInterface;
+use Dvi\Component\Widget\Form\Field\Contract\FieldTypeInterface;
 
 /**
  * Type FieldTypeHtml
