@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field\Contract;
+namespace Dvi\Component\Widget\Form\Field\Contract;
 
 /**
  * Field FormFieldValidationInterface

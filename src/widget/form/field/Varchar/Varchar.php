@@ -5,10 +5,10 @@ use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TEntry;
 use Adianti\Base\Lib\Widget\Form\TForm;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Adianti\Widget\Form\Field\FormFieldValidationTrait;
-use Dvi\Adianti\Widget\Form\Field\SearchableField;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\SearchableField;
 use Dvi\Support\View\View;
 use Exception;
 
@@ -43,7 +43,7 @@ class Varchar extends TEntry implements FormField
         $data['label'] = parent::getLabel();
         $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
-        $file = 'widget/form/field/Varchar/View/varchar.blade.php';
+        $file = 'Widget/Form/Field/Varchar/View/varchar.blade.php';
         echo View::run($file, $data);
     }
 

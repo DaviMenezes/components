@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Bootstrap\Component;
+namespace Dvi\Component\Widget\Bootstrap\Component;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 

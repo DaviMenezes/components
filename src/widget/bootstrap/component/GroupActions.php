@@ -1,12 +1,12 @@
 <?php
 
-namespace Dvi\Adianti\WidgetBootstrap\Component;
+namespace Dvi\Component\WidgetBootstrap\Component;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Form\TForm;
-use Dvi\Adianti\Widget\Form\Button;
-use Dvi\Adianti\Widget\Util\Action;
-use Dvi\Adianti\Widget\Util\ActionLink;
+use Dvi\Component\Widget\Form\Button;
+use Dvi\Component\Widget\Util\Action;
+use Dvi\Component\Widget\Util\ActionLink;
 
 /**
  * Component GroupActions

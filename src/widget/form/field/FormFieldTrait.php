@@ -1,9 +1,11 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Dvi\Adianti\Widget\Container\VBox;
 use Dvi\Adianti\Widget\Form\Field\Contract\FieldTypeInterface;
+use Dvi\Adianti\Widget\Form\Field\Date\Date;
+use Dvi\Adianti\Widget\Form\Field\Hidden\Hidden;
 use Dvi\Adianti\Widget\Form\Field\Validator\MaxLengthValidator;
 use Dvi\Adianti\Widget\Form\Field\Validator\RequiredValidator;
 use Dvi\Support\Http\Request;

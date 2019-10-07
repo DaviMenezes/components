@@ -1,12 +1,12 @@
 <?php
-namespace Dvi\Adianti\Widget\Base;
+namespace Dvi\Component\Widget\Base;
 
 use Adianti\Base\Lib\Registry\TSession;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Datagrid\TDataGrid;
 use Adianti\Base\Lib\Widget\Datagrid\TDataGridAction;
-use Dvi\Support\Http\Request;
 use App\Http\Router;
+use Dvi\Support\Http\Request;
 use ReflectionClass;
 
 /**

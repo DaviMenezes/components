@@ -1,9 +1,9 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Base;
+namespace Dvi\Component\Widget\Base;
 
 use Adianti\Base\Lib\Widget\Datagrid\TDataGridColumn;
-use Dvi\Adianti\Widget\Util\Action;
+use Dvi\Component\Widget\Util\Action;
 use Dvi\Support\Http\Request;
 
 /**

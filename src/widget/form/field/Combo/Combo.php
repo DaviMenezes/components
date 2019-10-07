@@ -6,11 +6,11 @@ use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TCombo;
 use Adianti\Base\Lib\Widget\Form\TForm;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Adianti\Widget\Form\Field\FormFieldValidationTrait;
-use Dvi\Adianti\Widget\Form\Field\SearchableField;
-use Dvi\Adianti\Widget\Form\Field\SelectionFieldTrait;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\SearchableField;
+use Dvi\Component\Widget\Form\Field\SelectionFieldTrait;
 use Dvi\Support\View\View;
 use Exception;
 
@@ -131,7 +131,7 @@ class Combo extends TCombo implements FormField
             'options_properties' => []
         ];
 
-        echo View::run("/widget/form/field/Combo/View/view.blade.php", $params);
+        echo View::run("Widget/Form/Field/Combo/View/view.blade.php", $params);
 
         if ($this->searchable) {
             $select = $this->getTextPlaceholder();

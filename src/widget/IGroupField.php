@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget;
+namespace Dvi\Component\Widget;
 
 /**
  * Widget IGroupField

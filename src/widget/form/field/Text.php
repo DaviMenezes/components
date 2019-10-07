@@ -1,12 +1,12 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Adianti\Base\Lib\Widget\Form\TText;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Support\View\View;
 use Exception;
 

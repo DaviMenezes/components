@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field\Validator;
+namespace Dvi\Component\Widget\Form\Field\Validator;
 
 use Adianti\Base\Lib\Validator\TFieldValidator;
 

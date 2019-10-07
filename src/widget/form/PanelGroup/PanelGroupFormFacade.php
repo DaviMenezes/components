@@ -1,13 +1,13 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\PanelGroup;
+namespace Dvi\Component\Widget\Form\PanelGroup;
 
 use Adianti\Base\Lib\Widget\Form\TField;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Adianti\Base\Lib\Widget\Form\TLabel;
-use Dvi\Adianti\Widget\Base\GridColumn;
-use Dvi\Adianti\Widget\Base\GroupField;
-use Dvi\Adianti\Widget\IGroupField;
+use Dvi\Component\Widget\Base\GridColumn;
+use Dvi\Component\Widget\Base\GroupField;
+use Dvi\Component\Widget\IGroupField;
 
 /**
  * Form PanelGroupFormInterface

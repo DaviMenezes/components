@@ -1,5 +1,5 @@
 <?php
-namespace Dvi\Adianti\Widget\Form\Field\Contract;
+namespace Dvi\Component\Widget\Form\Field\Contract;
 
 use Adianti\Base\Lib\Widget\Form\AdiantiWidgetInterface;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Bootstrap\Component;
+namespace Dvi\Component\Widget\Bootstrap\Component;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
-use Dvi\Adianti\Widget\Util\Action;
-use Dvi\Adianti\Widget\Util\ActionLink;
+use Dvi\Component\Widget\Util\Action;
+use Dvi\Component\Widget\Util\ActionLink;
 
 /**
  * Component DActionGroup

@@ -1,13 +1,13 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\PanelGroup;
+namespace Dvi\Component\Widget\Form\PanelGroup;
 
 use Adianti\Base\Lib\Control\TAction;
 use Adianti\Base\Lib\Widget\Container\TNotebook;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Adianti\Base\Lib\Wrapper\BootstrapNotebookWrapper;
-use Dvi\Adianti\Widget\Base\GridBootstrap;
-use Dvi\Adianti\Widget\Util\Action;
+use Dvi\Component\Widget\Base\GridBootstrap;
+use Dvi\Component\Widget\Util\Action;
 
 /**
  * Form PanelGroupNotebookFacade

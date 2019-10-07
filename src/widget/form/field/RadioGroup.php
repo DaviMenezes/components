@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\TRadioGroup;
 use Dvi\Adianti\Widget\Form\Field\Contract\FormField;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\PanelGroup;
+namespace Dvi\Component\Widget\Form\PanelGroup;
 
 use Adianti\Base\Lib\Widget\Container\THBox;
 use Adianti\Base\Lib\Widget\Container\TPanelGroup;
@@ -9,13 +9,13 @@ use Adianti\Base\Lib\Widget\Form\THidden;
 use Adianti\Base\Lib\Widget\Form\TLabel;
 use App\Http\Router;
 use Dvi\Adianti\Helpers\Reflection;
-use Dvi\Adianti\Widget\Base\GridBootstrap;
-use Dvi\Adianti\Widget\Base\GridColumn as Col;
-use Dvi\Adianti\Widget\Base\GridElement;
-use Dvi\Adianti\Widget\Bootstrap\Component\ButtonGroup;
-use Dvi\Adianti\Widget\Container\HBox;
-use Dvi\Adianti\Widget\Container\VBox;
-use Dvi\Adianti\Widget\IDviWidget;
+use Dvi\Component\Widget\Base\GridBootstrap;
+use Dvi\Component\Widget\Base\GridColumn as Col;
+use Dvi\Component\Widget\Base\GridElement;
+use Dvi\Component\Widget\Bootstrap\Component\ButtonGroup;
+use Dvi\Component\Widget\Container\HBox;
+use Dvi\Component\Widget\Container\VBox;
+use Dvi\Component\Widget\IDviWidget;
 use Dvi\AdiantiExtension\Route;
 use ReflectionClass;
 use Stringy\StaticStringy;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field\Type;
+namespace Dvi\Component\Widget\Form\Field\Type;
 
 use Dvi\Adianti\Widget\Form\Field\Contract\FieldTypeInterface;
 

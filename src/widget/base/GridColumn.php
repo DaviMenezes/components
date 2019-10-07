@@ -1,14 +1,14 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Base;
+namespace Dvi\Component\Widget\Base;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Form\TField;
 use Adianti\Base\Lib\Widget\Form\TLabel;
 use Dvi\Support\Http\Request;
-use Dvi\Adianti\Widget\Container\VBox;
-use Dvi\Adianti\Widget\Form\Button;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Container\VBox;
+use Dvi\Component\Widget\Form\Button;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
 
 /**
  * Column to bootstrap grid

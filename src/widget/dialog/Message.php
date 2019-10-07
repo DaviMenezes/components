@@ -1,12 +1,12 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Dialog;
+namespace Dvi\Component\Widget\Dialog;
 
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Dialog\TMessage;
 use Dvi\Adianti\Helpers\Utils;
-use Dvi\Adianti\Widget\Util\Action;
+use Dvi\Component\Widget\Util\Action;
 
 /**
  * Dialog Message

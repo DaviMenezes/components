@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form;
+namespace Dvi\Component\Widget\Form;
 
 use Adianti\Base\Lib\Control\TAction;
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
@@ -11,7 +11,7 @@ use Adianti\Base\Lib\Widget\Form\TField;
 use Adianti\Base\Lib\Widget\Form\TLabel;
 use Adianti\Base\Lib\Widget\Util\TImage;
 use Dvi\Adianti\Helpers\GUID;
-use Dvi\Adianti\Widget\Util\Action;
+use Dvi\Component\Widget\Util\Action;
 use Exception;
 
 /**

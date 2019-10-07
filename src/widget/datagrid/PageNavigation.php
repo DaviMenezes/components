@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Datagrid;
+namespace Dvi\Component\Widget\Datagrid;
 
 use Adianti\Base\Lib\Control\TAction;
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;

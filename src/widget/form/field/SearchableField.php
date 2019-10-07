@@ -1,5 +1,5 @@
 <?php
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 /**
  *  SearchableField

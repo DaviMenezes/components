@@ -1,10 +1,10 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Container;
+namespace Dvi\Component\Widget\Container;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Container\THBox;
-use Dvi\Adianti\Widget\IGroupField;
+use Dvi\Component\Widget\IGroupField;
 
 /**
  * Extension of the THBox. Adiciona alguns botões com estilo alterado

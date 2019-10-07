@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Base;
+namespace Dvi\Component\Widget\Base;
 
 use Dvi\Adianti\Widget\IGroupField;
 

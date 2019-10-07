@@ -1,11 +1,10 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Widget\Form\THtmlEditor;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Lib\Widget\Base\Script;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 
 /**
  * Form HtmlEditor

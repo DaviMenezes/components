@@ -1,5 +1,5 @@
 <?php
-namespace Dvi\Adianti\Widget\Container;
+namespace Dvi\Component\Widget\Container;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Container\TVBox;

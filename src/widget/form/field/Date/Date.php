@@ -1,12 +1,13 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field\Date;
 
-use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TDate;
-use Dvi\Adianti\Widget\Form\Field\Contract\FormField;
-use Dvi\Adianti\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Adianti\Widget\Form\Field\Validator\DateValidator;
+use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
+use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\SearchableField;
+use Dvi\Component\Widget\Form\Field\Validator\DateValidator;
 
 /**
  *  Date

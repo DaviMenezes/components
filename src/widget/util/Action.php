@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Util;
+namespace Dvi\Component\Widget\Util;
 
 use Adianti\Base\Lib\Control\TAction;
 use App\Http\RouteInfo;

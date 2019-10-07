@@ -1,9 +1,11 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field\Hidden;
 
 use Adianti\Base\Lib\Widget\Form\THidden;
-use Dvi\Adianti\Widget\Form\Field\Type\FieldTypeString;
+use Dvi\Component\Widget\Form\Field\FormFieldTrait;
+use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\Type\FieldTypeString;
 use Dvi\Support\View\View;
 
 /**

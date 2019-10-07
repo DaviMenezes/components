@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Wrapper;
+namespace Dvi\Component\Widget\Wrapper;
 
 use Adianti\Base\Lib\Control\TAction;
 use Adianti\Base\Lib\Core\AdiantiApplicationConfig;
@@ -9,7 +9,7 @@ use Adianti\Base\Lib\Database\TCriteria;
 use Adianti\Base\Lib\Database\TTransaction;
 use Adianti\Base\Lib\Widget\Form\TSeekButton;
 use Adianti\Base\Lib\Widget\Wrapper\TDBSeekButton;
-use Dvi\Adianti\Widget\Util\Action;
+use Dvi\Component\Widget\Util\Action;
 
 /**
  * Widget DBSeekButton

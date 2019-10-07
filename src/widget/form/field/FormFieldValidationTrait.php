@@ -1,9 +1,9 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\Field;
+namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Registry\TSession;
-use Dvi\Adianti\Widget\Form\Field\Validator\FieldValidator;
+use Dvi\Component\Widget\Form\Field\Validator\FieldValidator;
 
 /**
  * Field ValidationTrait

@@ -1,5 +1,5 @@
 <?php
-namespace Dvi\Adianti\Widget\Base;
+namespace Dvi\Component\Widget\Base;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 

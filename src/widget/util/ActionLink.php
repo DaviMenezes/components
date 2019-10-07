@@ -1,5 +1,5 @@
 <?php
-namespace Dvi\Adianti\Widget\Util;
+namespace Dvi\Component\Widget\Util;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Util\TImage;

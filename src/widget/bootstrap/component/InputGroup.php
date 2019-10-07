@@ -1,12 +1,12 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Bootstrap\Component;
+namespace Dvi\Component\Widget\Bootstrap\Component;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
-use Dvi\Adianti\Widget\Base\GroupField;
-use Dvi\Adianti\Widget\Form\Button;
-use Dvi\Adianti\Widget\IDviWidget;
-use Dvi\Adianti\Widget\Util\ActionLink;
+use Dvi\Component\Widget\Base\GroupField;
+use Dvi\Component\Widget\Form\Button;
+use Dvi\Component\Widget\IDviWidget;
+use Dvi\Component\Widget\Util\ActionLink;
 
 /**
  * Component InputGroup

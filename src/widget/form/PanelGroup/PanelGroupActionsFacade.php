@@ -1,12 +1,12 @@
 <?php
 
-namespace Dvi\Adianti\Widget\Form\PanelGroup;
+namespace Dvi\Component\Widget\Form\PanelGroup;
 
 use Adianti\Base\Lib\Widget\Base\TElement;
-use Dvi\Adianti\Widget\Bootstrap\Component\ButtonGroup;
-use Dvi\Adianti\Widget\Form\Button;
-use Dvi\Adianti\Widget\Util\Action;
-use Dvi\Adianti\Widget\Util\ActionLink;
+use Dvi\Component\Widget\Bootstrap\Component\ButtonGroup;
+use Dvi\Component\Widget\Form\Button;
+use Dvi\Component\Widget\Util\Action;
+use Dvi\Component\Widget\Util\ActionLink;
 use Dvi\Support\Http\Request;
 
 /**
