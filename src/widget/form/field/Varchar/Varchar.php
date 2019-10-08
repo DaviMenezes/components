@@ -39,12 +39,7 @@ class Varchar extends TEntry implements FormField
     {
         $data = $this->getViewData();
 
-        $data['has_error'] = $this->error_msg ? true : false;
-        $data['label'] = parent::getLabel();
-        $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
-
-        $file = 'Widget/Form/Field/Varchar/View/varchar.blade.php';
-        echo View::run($file, $data);
+        echo $this->getView($data);
     }
 
     protected function getViewData()
@@ -52,13 +47,19 @@ class Varchar extends TEntry implements FormField
         $data = $this->prepareViewData();
 
         $properties = $this->tag->getProperties();
+        $properties['style'] .= '; '.$data['style'];
+        $properties['class'] .= '" '.$data['class'];
 
-        $data = array_merge($properties, $data);
-        $data['properties'] = '';
+        $data['properties'] = $properties;
 
-        collect($data)->filter()->map(function ($value, $property) use (&$data) {
-            $data['properties'] .= $property . '="' . $value . '" ';
+        collect($properties)->filter()->map(function ($value, $property) use (&$data) {
+            $data[$property] = '"'.$value.'"';
         });
+
+        $data['has_error'] = $this->error_msg ? true : false;
+        $data['label'] = parent::getLabel();
+        $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
+
         return $data;
     }
 
@@ -72,7 +73,7 @@ class Varchar extends TEntry implements FormField
 
         if (!empty($this->size)) {
             $width = strstr($this->size, '%') === false ? 'px' : '';
-            $data['style'] = "width:{$this->size}$width;";
+            $data['style'] = "width:{$this->size}$width";
         }
 
         //Todo Revolver estes ifs todos com serviços
@@ -111,9 +112,20 @@ class Varchar extends TEntry implements FormField
             $options = json_encode($this->completion);
             TScript::create(" tentry_autocomplete( '{$this->id}', $options); ");
         }
+        //Todo este script deve ficar na view
+        $data['numeric_mask'] = $this->numericMask;
         if ($this->numericMask) {
-            TScript::create("tentry_numeric_mask( '{$this->id}', {$this->decimals}, '{$this->decimalsSeparator}', '{$this->thousandSeparator}'); ");
+            $data['decimals'] = $this->decimals;
+            $data['decimals_separator'] = $this->decimalsSeparator;
+            $data['thousand_separator'] = $this->thousandSeparator;
+//            TScript::create("tentry_numeric_mask( '{$this->id}', {$this->decimals}, '{$this->decimalsSeparator}', '{$this->thousandSeparator}'); ");
         }
         return $data;
+    }
+
+    protected function getView(array $data)
+    {
+        $file = 'Widget/Form/Field/Varchar/View/varchar.blade.php';
+        return View::run($file, $data);
     }
 }
