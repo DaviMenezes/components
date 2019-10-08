@@ -178,7 +178,7 @@ trait FormFieldTrait
 
     protected function getFieldInfoValidationErrorData(string $label = null)
     {
-        $field_info = null;
+        $field_info = false;
         if (in_array(FormFieldValidationTrait::class, array_keys((new \ReflectionClass(self::class))->getTraits()))) {
             if ($this->error_msg) {
                 $this->setErrorValidationSession();
@@ -218,16 +218,16 @@ trait FormFieldTrait
 
     protected function showField()
     {
-        $method = (new \ReflectionClass(self::class))->getMethod('showView');
-        $called_class = get_called_class();
-        if ($method and $method->class == $called_class) {
-            $this->showView();
-            return;
-        }
-//        if (method_exists(self::class, 'showView')) {
+//        $method = (new \ReflectionClass(self::class))->getMethod('showView');
+//        $called_class = get_called_class();
+//        if ($method and $method->class == $called_class) {
 //            $this->showView();
 //            return;
 //        }
+        if (method_exists(self::class, 'showView')) {
+            $this->showView();
+            return;
+        }
         parent::show();
     }
 
