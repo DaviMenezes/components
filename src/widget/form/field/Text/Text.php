@@ -94,12 +94,11 @@ class Text extends TText implements FormField
         // add the content to the textarea
         $this->tag->add(htmlspecialchars($this->value));
 
-        $properties = '';
-        collect($this->tag->getProperties())
-            ->filter()
-            ->map(function ($value, $property) use (&$properties) {
-                $properties .= $property.'='. $value.' ';
-            });
+        $properties = $this->tag->getProperties();
+
+        $this->clearExtraParams($properties, $params);
+
+//        unset($properties['value']);
 
         $params = [
             'properties' => $properties,
@@ -110,5 +109,14 @@ class Text extends TText implements FormField
 
         $file = 'Widget/Form/Field/Text/View/text.blade.php';
         view($file, $params);
+    }
+
+    protected function clearExtraParams(array $properties, &$params)
+    {
+        foreach ($properties as $property => $value) {
+            if (isset($params[$property]) and $params[$property] == $value) {
+                unset($params[$property]);
+            }
+        }
     }
 }
