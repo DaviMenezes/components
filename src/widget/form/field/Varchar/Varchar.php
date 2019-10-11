@@ -7,8 +7,6 @@ use Adianti\Base\Lib\Widget\Form\TEntry;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
-use Dvi\Component\Widget\Form\Field\SearchableField;
 use Dvi\Support\View\View;
 use Exception;
 
@@ -20,11 +18,12 @@ use Exception;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Varchar extends TEntry implements FormField
+class Varchar extends TEntry implements FormField, FieldComponent
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
+    use BaseComponentTrait;
 
     public function __construct(string $name, string $label = null, int $max_length = null, bool $required = false)
     {
@@ -35,49 +34,8 @@ class Varchar extends TEntry implements FormField
         $this->operator('like');
     }
 
-    public function showView()
+    public function prepareViewParams()
     {
-        $data = $this->getViewData();
-
-        echo $this->getView($data);
-    }
-
-    protected function getViewData()
-    {
-        $data = $this->prepareViewData();
-
-        $properties = $this->tag->getProperties();
-        $properties['style'] .= '; '.$data['style'];
-        $properties['class'] .= '" '.$data['class'];
-
-        $data['properties'] = $properties;
-
-        collect($properties)->filter()->map(function ($value, $property) use (&$data) {
-            $data[$property] = '"'.$value.'"';
-        });
-
-        $data['has_error'] = $this->error_msg ? true : false;
-        $data['label'] = parent::getLabel();
-        $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
-
-        return $data;
-    }
-
-    protected function prepareViewData()
-    {
-        $data['id'] = $this->id;
-        $data['name'] = $this->name;
-        if ($this->value) {
-            $data['value'] = $this->value;
-        }
-
-        if (!empty($this->size)) {
-            $width = strstr($this->size, '%') === false ? 'px' : '';
-            $data['style'] = "width:{$this->size}$width";
-        }
-
-        //Todo Revolver estes ifs todos com serviços
-
         // verify if the widget is non-editable
         if (parent::getEditable()) {
             if (isset($this->exitAction)) {
@@ -118,12 +76,11 @@ class Varchar extends TEntry implements FormField
             $data['decimals'] = $this->decimals;
             $data['decimals_separator'] = $this->decimalsSeparator;
             $data['thousand_separator'] = $this->thousandSeparator;
-//            TScript::create("tentry_numeric_mask( '{$this->id}', {$this->decimals}, '{$this->decimalsSeparator}', '{$this->thousandSeparator}'); ");
         }
         return $data;
     }
 
-    protected function getView(array $data)
+    public function getView(array $data)
     {
         $file = 'Widget/Form/Field/Varchar/View/varchar.blade.php';
         return View::run($file, $data);
