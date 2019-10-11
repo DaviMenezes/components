@@ -3,7 +3,9 @@
 namespace Dvi\Component\Widget\Form\Field\Date;
 
 use Adianti\Base\Lib\Widget\Form\TDate;
+use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
 use Dvi\Component\Widget\Form\Field\SearchableField;
@@ -17,11 +19,12 @@ use Dvi\Component\Widget\Form\Field\Validator\DateValidator;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Date extends TDate implements FormField
+class Date extends TDate implements FormField, FieldComponent
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
+    use BaseComponentTrait;
 
     protected $field_disabled;
 
@@ -50,14 +53,12 @@ class Date extends TDate implements FormField
         return $this->field_disabled;
     }
 
-    public function showView()
+    public function getView(array $data)
     {
-        $data = $this->getViewData();
-
         view('Widget/Form/Field/Date/View/date.blade.php', $data);
     }
 
-    protected function getViewData()
+    public function prepareViewParams()
     {
         $js_mask = str_replace('yyyy', 'yy', $this->mask);
         $language = strtolower(LANG);
@@ -71,9 +72,7 @@ class Date extends TDate implements FormField
             }
         }
 
-        $data = parent::getViewData();
-        $data['label'] = parent::getLabel();
-        $data['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
+        $data = parent::getViewCustomParameters();
         $data['editable'] = parent::getEditable();
         $data['mask'] = $this->mask ?? 'dd/mm/yyyy';
         $data['language'] = $language;
@@ -82,4 +81,6 @@ class Date extends TDate implements FormField
         $data['error_msg'] = $this->error_msg;
         return $data;
     }
+
+
 }
