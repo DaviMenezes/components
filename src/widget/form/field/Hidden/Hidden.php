@@ -40,23 +40,28 @@ class Hidden extends THidden
         $this->tag->{'value'}  = $this->value; // tag value
         $this->tag->{'type'}   = 'hidden';     // input type
         $this->tag->{'widget'} = 'thidden';
-        $this->tag->{'style'}  = "width:{$this->size}";
+        if ($this->size) {
+            $this->tag->{'style'}  = "width:{$this->size}";
+        }
 
         $properties = $this->tag->getProperties();
 
-        $data = [];
-        foreach ($properties as $property => $value) {
-            if (empty($value)) {
-                continue;
-            }
-            $data[$property] = $value;
-        }
+        $params['label'] = $this->error_msg ? $this->wrapperStringClass('verifique') : $this->getLabel();
+        $params['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
+        $params['properties'] = collect($properties)->filter()->all();
+        $params = collect($params)->merge($properties)->all();
+//        foreach ($properties as $property => $value) {
+//            if (empty($value)) {
+//                continue;
+//            }
+//            $params[$property] = $value;
+//        }
 
-        $params = [
-            'label' => $this->error_msg ? $this->wrapperStringClass('verifique') : $this->getLabel(),
-            'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel()),
-            'properties' => $data
-        ];
+//        $params = [
+//            'label' => $this->error_msg ? $this->wrapperStringClass('verifique') : $this->getLabel(),
+//            'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel()),
+//            'properties' => $data
+//        ];
         $this->view($params);
     }
 
