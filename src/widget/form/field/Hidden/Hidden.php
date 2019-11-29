@@ -3,6 +3,8 @@
 namespace Dvi\Component\Widget\Form\Field\Hidden;
 
 use Adianti\Base\Lib\Widget\Form\THidden;
+use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
+use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
 use Dvi\Component\Widget\Form\Field\Type\FieldTypeString;
@@ -16,10 +18,11 @@ use Dvi\Support\View\View;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Hidden extends THidden
+class Hidden extends THidden implements FieldComponent
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
+    use BaseComponentTrait;
 
     public function __construct(string $name, $default_value = null)
     {
@@ -32,7 +35,7 @@ class Hidden extends THidden
         $this->setType(new FieldTypeString());
     }
 
-    public function showView()
+    public function prepareViewParams()
     {
         // set the tag properties
         $this->tag->{'id'}     = 'thidden_' . mt_rand(1000000000, 1999999999);
@@ -62,11 +65,17 @@ class Hidden extends THidden
 //            'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel()),
 //            'properties' => $data
 //        ];
-        $this->view($params);
+        return $params;
     }
 
-    protected function view($data)
+//    protected function view($data)
+//    {
+//        echo View::run("Widget/Form/Field/Hidden/View/hidden.blade.php", $data);
+//    }
+
+    public function getView(array $data)
     {
-        echo View::run("widget/form/field/Hidden/View/hidden.blade.php", $data);
+        $file = "Widget/Form/Field/Hidden/View/hidden.blade.php";
+        return View::run($file, $data);
     }
 }

@@ -61,16 +61,19 @@ class Varchar extends TEntry implements FormField, FieldComponent
                     $this->setProperty('onBlur', $this->exitFunction, true);
                 }
             }
+            if ($this->getMask()) {
+                $this->tag->{'onKeyPress'} = "return tentry_mask(this,event,'{$this->getMask()}')";
+            }
         } else {
-            $data['readonly'] = 1;
-            $data['onmouseover'] = "style.cursor='default'";
+            $this->properties['readonly'] = 1;
+            $this->properties['onmouseover'] = "style.cursor='default'";
         }
 
         if (isset($this->completion)) {
             $options = json_encode($this->completion);
             TScript::create(" tentry_autocomplete( '{$this->id}', $options); ");
         }
-        //Todo este script deve ficar na view
+
         $data['numeric_mask'] = $this->numericMask;
         if ($this->numericMask) {
             $data['decimals'] = $this->decimals;

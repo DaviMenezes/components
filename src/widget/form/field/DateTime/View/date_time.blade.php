@@ -8,10 +8,10 @@
     <script language="JavaScript">tentry_new_mask('{{$id}}', {{$mask}}); </script>
 @endif
 
-<input {!! $properties !!}>
+<input {!! $properties !!} widget="tdatetime">
 
-@include('Widget.Form.Field.base.field_info')
+@include('form.field.base.field_info')
 
 @if($editable)
-    <script language="JavaScript">tdate_start( '#{{$id}}', '{{$mask}}', '{{$language}}', '{{$outer_size}}', '{{$options}}');</script>
+    <script language="JavaScript">tdatetime_start( '#{{$id}}', '{{$mask}}', '{{$language}}', '{{$outer_size}}', '{{$options}}');</script>
 @endif

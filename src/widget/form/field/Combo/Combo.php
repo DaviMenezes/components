@@ -6,7 +6,9 @@ use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TCombo;
 use Adianti\Base\Lib\Widget\Form\TForm;
+use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
 use Dvi\Component\Widget\Form\Field\SearchableField;
@@ -22,12 +24,13 @@ use Exception;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Combo extends TCombo implements FormField
+class Combo extends TCombo implements FormField, FieldComponent
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use SelectionFieldTrait;
+    use BaseComponentTrait;
 
     protected $field_disabled;
 
@@ -75,63 +78,49 @@ class Combo extends TCombo implements FormField
         }
     }
 
-    public function showView()
+    public function prepareViewParams()
     {
-        // define the tag properties
-        $data['name']  = $this->name;    // tag name
-
-        if ($this->id and empty($this->tag->{'id'})) {
-            $data['id'] = $this->id;
-        }
-
-        if (!empty($this->size)) {
-            if (strstr($this->size, '%') !== false) {
-                $data['style'] = "width:{$this->size};"; //aggregate style info
-            } else {
-                $data['style'] = "width:{$this->size}px;"; //aggregate style info
-            }
-        }
-
         if (isset($this->changeAction)) {
             if (!TForm::getFormByName($this->formName) instanceof TForm) {
                 throw new Exception(AdiantiCoreTranslator::translate('You must pass the ^1 (^2) as a parameter to ^3', __CLASS__, $this->name, 'TForm::setFields()'));
             }
 
             $string_action = $this->changeAction->serialize(false);
-            $data['changeaction'] = "__adianti_post_lookup('{$this->formName}', '{$string_action}', '{$this->id}', 'callback')";
-            $data['onChange'] = $this->getProperty('changeaction');
+            $this->properties['changeaction'] = "__adianti_post_lookup('{$this->formName}', '{$string_action}', '{$this->properties['id']}', 'callback')";
+            $this->properties['onChange'] = $this->getProperty('changeaction');
         }
 
         if (isset($this->changeFunction)) {
-            $data['changeaction'] = $this->changeFunction;
-            $data['onChange'] = $this->changeFunction;
+            $this->properties['changeaction'] = $this->changeFunction;
+            $this->properties['onChange'] = $this->changeFunction;
         }
 
         // verify whether the widget is editable
         if (!parent::getEditable()) {
             // make the widget read-only
-            $data['onclick']  = "return false;";
-            $data['style']   .= ';pointer-events:none';
-            $data['tabindex'] = '-1';
-            $data['class']    = 'tcombo_disabled'; // CSS
+            $this->properties['onclick']  = "return false;";
+            $this->properties['style'][]   = ';pointer-events:none';
+            $this->properties['tabindex'] = '-1';
+            $this->properties['class'][]    = 'tcombo_disabled';
         }
 
         if ($this->searchable) {
-            $data['role'] = 'tcombosearch';
+            $this->properties['role'] = 'tcombosearch';
         }
-
-        // shows the combobox
-//        $this->renderItems();
 
         $params = [
             'label' => $this->error_msg ? $this->wrapperStringClass('verifique') : $this->getLabel(),
             'field_info' => $this->getFieldInfoValidationErrorData($this->getLabel()),
-            'properties' => $data,
-            'option_items' => $this->items,
+            'option_items' => $this->getOptionItems(),
             'options_properties' => []
         ];
 
-        echo View::run("Widget/Form/Field/Combo/View/view.blade.php", $params);
+        return $params;
+    }
+
+    public function getView(array $data)
+    {
+        echo View::run("Widget/Form/Field/Combo/View/view.blade.php", $data);
 
         if ($this->searchable) {
             $select = $this->getTextPlaceholder();
@@ -141,5 +130,10 @@ class Combo extends TCombo implements FormField
                 TScript::create(" tmultisearch_disable_field( '{$this->formName}', '{$this->name}'); ");
             }
         }
+    }
+
+    protected function getOptionItems()
+    {
+        return $this->items;
     }
 }

@@ -52,7 +52,9 @@ class VBox extends TVBox implements IGroupField
             $child->{'style'} .= $style;
         }
         $this->childs[] = $child;
-        return parent::add($child);
+        $wrapper = parent::add($child);
+        $wrapper->{'style'} .= '; margin-bottom: 2px;';
+        return $wrapper;
     }
 
     public function getChilds($position = null):array

@@ -13,12 +13,14 @@ trait BaseComponentTrait
 {
     protected $properties = [];
     protected $params = [];
+    protected $html;
 
     public function showView()
     {
         $this->prepareParams();
 
-        echo $this->getView($this->params);
+        $this->setHtml();
+        echo $this->html;
     }
 
     public function prepareParams()
@@ -27,9 +29,12 @@ trait BaseComponentTrait
 
         $this->properties = collect($this->properties)->merge($this->tag->getProperties())->all();
 
-        if (!empty($this->size)) {
+        if (notEmpty($this->size)) {
             $width = strstr($this->size, '%') === false ? 'px' : '';
-            $this->properties['style'] = collect($this->properties['style'])->add("width:{$this->size}$width")->all();
+            $this->properties['style'] = collect($this->properties['style'] ?? [])
+                ->add("width:{$this->size}$width")
+                ->add("height:32px")
+                ->all();
         }
 
         $this->clearExtraParams($this->properties, $this->params);
@@ -37,7 +42,7 @@ trait BaseComponentTrait
         $this->preparePropertyValues();
 
         $this->params['properties'] = $this->properties;
-        $this->params['has_error'] = $this->error_msg ? true : false;
+        $this->params['has_error'] = $this->error_msg ? true : null;
         $this->params['label'] = parent::getLabel();
         $this->params['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
@@ -74,5 +79,15 @@ trait BaseComponentTrait
 
     public function getViewCustomParameters()
     {
+    }
+
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    protected function setHtml(): void
+    {
+        $this->html = $this->getView($this->params);
     }
 }

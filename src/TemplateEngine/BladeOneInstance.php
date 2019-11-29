@@ -45,10 +45,13 @@ class BladeOneInstance implements TemplateEngineInterface
     public static function instance()
     {
         self::$instance = self::$instance ?? new BladeOne(self::$view_path, self::$cache_path, self::$mode);
-        $filename = self::$custom_view_path . '/' . self::$view;
-        if (file_exists($filename)) {
+        $custom_view = self::$custom_view_path . '/' . self::$view;
+        if (file_exists($custom_view)) {
             self::$instance->setPath(self::$custom_view_path, self::$cache_path);
+        } else {
+            self::$instance->setPath(self::$view_path, self::$cache_path);
         }
+
         return self::$instance;
     }
 

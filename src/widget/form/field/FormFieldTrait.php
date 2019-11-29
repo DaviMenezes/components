@@ -5,9 +5,12 @@ namespace Dvi\Component\Widget\Form\Field;
 use Dvi\Component\Widget\Container\VBox;
 use Dvi\Component\Widget\Form\Field\Contract\FieldTypeInterface;
 use Dvi\Component\Widget\Form\Field\Date\Date;
+use Dvi\Component\Widget\Form\Field\DateTime\DateTime;
 use Dvi\Component\Widget\Form\Field\Hidden\Hidden;
+use Dvi\Component\Widget\Form\Field\RadioGroup\RadioGroup;
 use Dvi\Component\Widget\Form\Field\Validator\MaxLengthValidator;
 use Dvi\Component\Widget\Form\Field\Validator\RequiredValidator;
+use Dvi\Support\Environment\Environment;
 use Dvi\Support\Http\Request;
 
 /**
@@ -39,8 +42,17 @@ trait FormFieldTrait
 
     public function setup(string $label, bool $required = false, int $max_length = null)
     {
+        $this->setProperty('id', $this->id);
+        $this->setProperty('name', $this->getName());
+        $this->setProperty('placeholder', strtolower($label ?? $this->getName()));
+        $this->setProperty('value', $this->getValue());
+        $this->setSize('100%');
+
         $this->label(ucfirst($label));
         $this->required = $required;
+        if ($required) {
+            $this->setProperty('required', 'required');
+        }
         $this->max_length = $max_length > 0 ? $max_length : null;
         $this->tip = true;
     }
@@ -172,7 +184,13 @@ trait FormFieldTrait
             $vbox->show();
             parent::show();
         } catch (\Exception $e) {
-            throw new \Exception('Houve um problema na construção do campo '. $this->getName());
+            $msg = 'Houve um problema na construção do campo ' . $this->getName();
+            if (Environment::isDevelopment()) {
+                $msg .= "<br>Msg: ".$e->getMessage();
+                $msg .= "<br>File: ".$e->getFile().' Line :'.$e->getLine();
+                $msg .= "<br>Code: ".$e->getCode();
+            }
+            throw new \Exception($msg);
         }
     }
 
