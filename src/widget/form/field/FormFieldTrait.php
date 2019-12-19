@@ -154,7 +154,7 @@ trait FormFieldTrait
         return $this->hide_in_edit;
     }
 
-    public function setValue($value)
+    public function setValue(?string $value)
     {
         if (empty($value)) {
             return;
@@ -236,12 +236,6 @@ trait FormFieldTrait
 
     protected function showField()
     {
-//        $method = (new \ReflectionClass(self::class))->getMethod('showView');
-//        $called_class = get_called_class();
-//        if ($method and $method->class == $called_class) {
-//            $this->showView();
-//            return;
-//        }
         if (method_exists(self::class, 'showView')) {
             $this->showView();
             return;

@@ -3,6 +3,7 @@
 namespace Dvi\Component\Widget\Form\Field\Validator;
 
 use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
+use Dvi\Component\Widget\Form\Field\Contract\ValidatorContract;
 
 /**
  * Validator CpfValidator
@@ -13,7 +14,7 @@ use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
  * @copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class CpfValidator extends FieldValidator
+class CpfValidator implements ValidatorContract
 {
     protected $label;
     protected $value;
@@ -24,13 +25,9 @@ class CpfValidator extends FieldValidator
      */
     private $debug;
 
-    public function __construct($debug = false, string $error_msg = null)
-    {
-        parent::__construct($error_msg);
-        $this->debug = $debug;
-    }
+    use ValidatorImplementation;
 
-    public function validate($label, $value, $parameters = null)
+    public function validate($label, $value, array $parameters = null):bool
     {
         if (empty($value)) {
             return true;
@@ -75,8 +72,7 @@ class CpfValidator extends FieldValidator
 
     private function addInvalidCpfMessage($msg = null)
     {
-        $msg = $msg;
-        if ($this->debug or !$msg) {
+        if (!$msg) {
             $msg = AdiantiCoreTranslator::translate('The field ^1 has not a valid CPF', $this->label);
         }
         if (!in_array($msg, $this->errors)) {

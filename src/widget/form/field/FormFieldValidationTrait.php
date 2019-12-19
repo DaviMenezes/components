@@ -3,7 +3,7 @@
 namespace Dvi\Component\Widget\Form\Field;
 
 use Adianti\Base\Lib\Registry\TSession;
-use Dvi\Component\Widget\Form\Field\Validator\FieldValidator;
+use Dvi\Component\Widget\Form\Field\Validator\ValidatorImplementation;
 
 /**
  * Field ValidationTrait
@@ -54,7 +54,7 @@ trait FormFieldValidationTrait
 
                 $parameters['request'] = func_num_args() != -1 ? func_get_arg(0) : false;
 
-                /**@var FieldValidator $validator */
+                /**@var ValidatorImplementation $validator */
                 if (!$validator->validate($label, $this->getValue(), $parameters)) {
                     $this->addErrorMessage($label .': '. $validator->getErrorMsg());
                 }

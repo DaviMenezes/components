@@ -105,8 +105,9 @@ class Button extends TField implements AdiantiWidgetInterface
 
     /**
      * @param string $label
+     * @return Button
      */
-    public function setLabel($label)
+    public function setLabel(string $label)
     {
         $this->label = $label;
         return $this;
@@ -125,11 +126,12 @@ class Button extends TField implements AdiantiWidgetInterface
     }
 
     /**
-     * @param string $name
-     * @param string $value
+     * Define a field property
+     * @param string $name Property Name
+     * @param string $value Property Value
      * @param bool $replace
      */
-    public function setProperty($name, $value, $replace = true)
+    public function setProperty(string $name, string $value, bool $replace = true)
     {
         $this->properties[$name] = $value;
     }
@@ -144,19 +146,20 @@ class Button extends TField implements AdiantiWidgetInterface
     }
 
     /**
-     * @param string  $form_name
-     * @param string $field
+     * Enable the field
+     * @param string $form_name Form name
+     * @param string $field_name Field name
      */
-    public static function enableField($form_name, $field)
+    public static function enableField(string $form_name, string $field_name)
     {
-        TScript::create(" tbutton_enable_field('{$form_name}', '{$field}'); ");
+        TScript::create(" tbutton_enable_field('{$form_name}', '{$field_name}'); ");
     }
 
     /**
      * @param string $form_name
-     * @param string $field
+     * @param object $field
      */
-    public static function disableField($form_name, $field)
+    public static function disableField(string $form_name, object $field)
     {
         TScript::create(" tbutton_disable_field('{$form_name}', '{$field}'); ");
     }

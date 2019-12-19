@@ -3,6 +3,7 @@
 namespace Dvi\Component\Widget\Form\Field\Validator;
 
 use Adianti\Base\App\Lib\Validator\TDateValidator;
+use Dvi\Component\Widget\Form\Field\Contract\ValidatorContract;
 
 /**
  * Validator DateValidator
@@ -14,16 +15,16 @@ use Adianti\Base\App\Lib\Validator\TDateValidator;
  * @see https://github.com/DaviMenezes
   * @see https://t.me/davimenezes
  */
-class DateValidator extends TDateValidator
+class DateValidator extends TDateValidator implements ValidatorContract
 {
-    private $error_msg;
+    use ValidatorImplementation;
 
     public function __construct($error_msg = null)
     {
         $this->error_msg = $error_msg;
     }
 
-    public function validate($label, $value, $parameters = null)
+    public function validate($label, $value, array $parameters = null):bool
     {
         try {
             if (empty($value)) {

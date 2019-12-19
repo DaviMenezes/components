@@ -6,6 +6,7 @@ use Dvi\Adianti\Database\Transaction;
 use Dvi\Adianti\Helpers\Reflection;
 use Dvi\Adianti\Model\DB;
 use Dvi\Adianti\Model\DviModel;
+use Dvi\Component\Widget\Form\Field\Contract\ValidatorContract;
 
 /**
  * Validator UniqueValidator
@@ -17,21 +18,21 @@ use Dvi\Adianti\Model\DviModel;
  * @see https://github.com/DaviMenezes
   * @see https://t.me/davimenezes
  */
-class UniqueValidator extends FieldValidator
+class UniqueValidator implements ValidatorContract
 {
     protected $property;
     protected $default_msg;
     protected $service_provider;
 
+    use ValidatorImplementation;
+
     public function __construct($service, $property)
     {
-        parent::__construct($parameters['msg'] ?? null);
-
         $this->service_provider = $service;
         $this->property = $property;
     }
 
-    public function validate($label, $value, $parameters = null)
+    public function validate($label, $value, array $parameters = null):bool
     {
         if (method_exists($this->service_provider, 'validate')) {
             $parameters['property'] = $this->property;

@@ -2,6 +2,8 @@
 
 namespace Dvi\Component\Widget\Form\Field;
 
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentImputContract;
+
 /**
  *  BaseComponentTrait
  *
@@ -17,6 +19,8 @@ trait BaseComponentTrait
 
     public function showView()
     {
+        $this->createActions();
+
         $this->prepareParams();
 
         $this->setHtml();
@@ -89,5 +93,14 @@ trait BaseComponentTrait
     protected function setHtml(): void
     {
         $this->html = $this->getView($this->params);
+    }
+
+    protected function createActions(): void
+    {
+        $interfaces = class_implements(self::class);
+        if (!collect($interfaces)->has(FormComponentImputContract::class)) {
+            return;
+        }
+        $this->createExitAction();
     }
 }

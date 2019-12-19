@@ -47,11 +47,7 @@ class CKEditor extends TField implements AdiantiWidgetInterface
         }
     }
     
-    /**
-     * Define the field's value
-     * @param $value string string containing the field's value
-     */
-    public function setValue($value)
+    public function setValue(?string $value)
     {
         $this->value = $value;
     }

@@ -5,10 +5,12 @@ namespace Dvi\Component\Widget\Form\Field\DateTime;
 use Adianti\Base\App\Lib\Validator\TDateValidator;
 use Adianti\Base\Lib\Widget\Form\TDateTime;
 use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentImputContract;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\Input\FormFieldInputImplementation;
 use Dvi\Component\Widget\Form\Field\SearchableField;
 
 /**
@@ -20,12 +22,13 @@ use Dvi\Component\Widget\Form\Field\SearchableField;
  * @copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class DateTime extends TDateTime implements FormField, FieldComponent
+class DateTime extends TDateTime implements FormField, FieldComponent, FormComponentImputContract
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use BaseComponentTrait;
+    use FormFieldInputImplementation;
 
     /**
      * @var string
@@ -43,7 +46,7 @@ class DateTime extends TDateTime implements FormField, FieldComponent
         $this->operator('=');
     }
 
-    public function setMask($mask, $replaceOnPost = false)
+    public function setMask(string $mask, bool $replaceOnPost = false)
     {
         $this->mask = $mask;
 

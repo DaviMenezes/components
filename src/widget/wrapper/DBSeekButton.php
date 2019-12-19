@@ -99,11 +99,7 @@ class DBSeekButton extends TSeekButton
         return parent::getAction();
     }
 
-    /**
-     * Define the field's value
-     * @param $value [Current value]
-     */
-    public function setValue($value)
+    public function setValue(?string $value)
     {
         parent::setValue($value);
 
