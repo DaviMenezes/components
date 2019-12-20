@@ -12,6 +12,7 @@ use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
 use Dvi\Component\Widget\Form\Field\Input\FormFieldInputImplementation;
 use Dvi\Component\Widget\Form\Field\SearchableField;
+use Dvi\Component\Widget\Form\Field\Validator\DateValidator;
 
 /**
  * Fields DateTime
@@ -42,7 +43,7 @@ class DateTime extends TDateTime implements FormField, FieldComponent, FormCompo
         $this->setup($label ?? $name, $required);
         $this->setMask('dd/mm/yyyy hh:ii');
         $this->setDatabaseMask('yyyy-mm-dd hh:ii');
-        $this->addValidation($this->getLabel(), new TDateValidator());
+        $this->addValidation($this->getLabel(), new DateValidator());
         $this->operator('=');
     }
 

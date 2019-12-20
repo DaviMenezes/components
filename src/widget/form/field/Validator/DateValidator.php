@@ -15,7 +15,7 @@ use Dvi\Component\Widget\Form\Field\Contract\ValidatorContract;
  * @see https://github.com/DaviMenezes
   * @see https://t.me/davimenezes
  */
-class DateValidator extends TDateValidator implements ValidatorContract
+class DateValidator implements ValidatorContract
 {
     use ValidatorImplementation;
 
@@ -30,7 +30,18 @@ class DateValidator extends TDateValidator implements ValidatorContract
             if (empty($value)) {
                 return true;
             }
-            parent::validate($label, $value, $parameters);
+            $mask = $parameters[0];
+            $year_pos  = strpos($mask, 'yyyy');
+            $month_pos = strpos($mask, 'mm');
+            $day_pos   = strpos($mask, 'dd');
+
+            $year      = substr($value, $year_pos, 4);
+            $month     = substr($value, $month_pos, 2);
+            $day       = substr($value, $day_pos, 2);
+
+            if (!checkdate((int) $month, (int) $day, (int) $year)) {
+                throw new Exception("The field $label is not a valid date ($mask)");
+            }
             return true;
         } catch (\Exception $e) {
             $this->error_msg = $this->error_msg ?? 'Campo de data inválido';
