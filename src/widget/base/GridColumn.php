@@ -84,7 +84,7 @@ class GridColumn extends TElement
      * @param string $class
      * @param string $colStyle
      */
-    public function __construct($child, $class = null, $colStyle = null)
+    public function __construct($child = null, $class = null, $colStyle = null)
     {
         parent::__construct('div');
 
@@ -180,7 +180,7 @@ class GridColumn extends TElement
         }
 
         $this->custom_class = implode(' ', $classes);
-        return $this->custom_class . ' dvi_grid_col';
+        return $this->custom_class;
     }
 
     public static function pack(array $elements, array $class = null, array $style = null)

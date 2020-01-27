@@ -22,7 +22,7 @@ class GridBootstrap
     public function __construct($defaultColClass = null, $colStyle = null)
     {
         $this->grid = new TElement('div');
-
+        $this->grid->class = 'grid_dvi';
         //$this->grid->style = 'margin-left: 15px; margin-right: 15px;';
         //$this->setContainerDefault();
         $this->defaultColClass = $defaultColClass;
@@ -31,7 +31,7 @@ class GridBootstrap
 
     public function setContainerFluid()
     {
-        $this->grid->class = 'container-fluid';
+        $this->grid->class .= ' container-fluid';
     }
 
     public function setContainerDefault()

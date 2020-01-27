@@ -1,16 +1,12 @@
 <?php
 namespace Dvi\Component\Widget\Form\Field;
 
-use Adianti\Base\Lib\Core\AdiantiCoreTranslator;
 use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TEntry;
-use Adianti\Base\Lib\Widget\Form\TForm;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentEventContract;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
-use Dvi\Component\Widget\Form\Field\Contract\FormComponentImputContract;
-use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
-use Dvi\Component\Widget\Form\Field\Input\FormFieldInputImplementation;
+use Dvi\Component\Widget\Form\Field\Input\FormComponentEventImplementation;
 use Dvi\Support\View\View;
-use Exception;
 
 /**
  * Widget Form Varchar
@@ -20,13 +16,13 @@ use Exception;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Varchar extends TEntry implements FormField, FieldComponent, FormComponentImputContract
+class Varchar extends TEntry implements FormField, FieldComponent, FormComponentEventContract
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use BaseComponentTrait;
-    use FormFieldInputImplementation;
+    use FormComponentEventImplementation;
 
     public function __construct(string $name, string $label = null, int $max_length = null, bool $required = false)
     {
@@ -61,7 +57,6 @@ class Varchar extends TEntry implements FormField, FieldComponent, FormComponent
 
     public function getView(array $data)
     {
-        $file = 'Widget/Form/Field/Varchar/View/varchar.blade.php';
-        return View::run($file, $data);
+        return View::run('Widget.Form.Field.Varchar.View.varchar', $data);
     }
 }

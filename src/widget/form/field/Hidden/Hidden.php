@@ -68,11 +68,6 @@ class Hidden extends THidden implements FieldComponent
         return $params;
     }
 
-//    protected function view($data)
-//    {
-//        echo View::run("Widget/Form/Field/Hidden/View/hidden.blade.php", $data);
-//    }
-
     public function getView(array $data)
     {
         $file = "Widget/Form/Field/Hidden/View/hidden.blade.php";
