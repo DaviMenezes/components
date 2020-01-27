@@ -7,10 +7,12 @@ use Adianti\Base\Lib\Widget\Base\TElement;
 use Adianti\Base\Lib\Widget\Form\TCheckGroup;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentEventContract;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\Input\FormComponentEventImplementation;
 use Dvi\Component\Widget\Form\Field\SearchableField;
 
 /**
@@ -18,12 +20,13 @@ use Dvi\Component\Widget\Form\Field\SearchableField;
  * @copyright  Copyright (c) 2019. (davimenezes.dev@gmail.com)
  * @see https://github.com/DaviMenezes
  */
-class CheckGroup extends TCheckGroup implements FormField, FieldComponent
+class CheckGroup extends TCheckGroup implements FormField, FieldComponent, FormComponentEventContract
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use BaseComponentTrait;
+    use FormComponentEventImplementation;
 
     public function __construct(string $name, string $label, $required = false)
     {

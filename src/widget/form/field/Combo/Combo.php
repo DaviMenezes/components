@@ -7,10 +7,13 @@ use Adianti\Base\Lib\Widget\Base\TScript;
 use Adianti\Base\Lib\Widget\Form\TCombo;
 use Adianti\Base\Lib\Widget\Form\TForm;
 use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentEventContract;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
+use Dvi\Component\Widget\Form\Field\Display\ComponentDisplayImplementation;
 use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
+use Dvi\Component\Widget\Form\Field\Input\FormComponentEventImplementation;
 use Dvi\Component\Widget\Form\Field\SearchableField;
 use Dvi\Component\Widget\Form\Field\SelectionFieldTrait;
 use Dvi\Support\View\View;
@@ -24,13 +27,14 @@ use Exception;
  * @copyright  Copyright (c) 2017. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class Combo extends TCombo implements FormField, FieldComponent
+class Combo extends TCombo implements FormField, FieldComponent, FormComponentEventContract
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use SelectionFieldTrait;
     use BaseComponentTrait;
+    use FormComponentEventImplementation;
 
     protected $field_disabled;
 
@@ -38,7 +42,7 @@ class Combo extends TCombo implements FormField, FieldComponent
     {
         parent::__construct($name);
 
-        $this->setup($label ?? $name, $required);
+        $this->setup($label, $required);
         $this->useTip(false);
         $this->operator('=');
 
@@ -134,6 +138,17 @@ class Combo extends TCombo implements FormField, FieldComponent
 
     protected function getOptionItems()
     {
-        return $this->items;
+        $new_items = [];
+        foreach ($this->items as $key => $item) {
+            if (is_array($item)) {
+                $new_items[$key] = $item;
+                continue;
+            }
+            if ($this->value == $key) {
+                $new_items[$key]['selected'] = false;
+            }
+            $new_items[$key]['value'] = $item;
+        }
+        return $new_items;
     }
 }

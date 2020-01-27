@@ -1,6 +1,6 @@
 <?php
 
-namespace Dvi\Adianti\Componente\Model\Form\Fields;
+namespace Dvi\Componente\Widget\Form\Fields;
 
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\Type\FieldTypeFloat;
@@ -27,6 +27,7 @@ class Numeric extends Varchar implements FormField
         bool $replaceOnPost = true
     ) {
         parent::__construct($name);
+
         $this->tag->{'pattern'}   = '[0-9]*';
         $this->tag->{'inputmode'} = 'numeric';
 

@@ -27,7 +27,7 @@ class GridRow extends TElement
     {
         parent::__construct('div');
         $this->class = 'row';
-        $this->{'style'} .= 'clear:both; ';
+        $this->{'style'} .= 'clear:both; margin-top:5px';
         $this->style .= $rowStyle;
 
         $this->defaultColType = 'md';

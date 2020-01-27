@@ -37,9 +37,9 @@ trait ValidatorImplementation
     protected function setDefaultValues($params): void
     {
         $this->label = $params['label'] ?? $this->label;
-        $this->value1 = $params['value1'] ?? $this->value1;
+        $this->value1 = $params['value'] ?? $this->value1;
         $this->value2 = $params['value2'] ?? $this->value2;
-        $this->error_msg = $params['error_msg'] ?? $this->error_msg;
+        $this->error_msg = $params['msg'] ?? $this->error_msg;
     }
 
     public function isValid($param):bool

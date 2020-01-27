@@ -57,8 +57,6 @@ class CNPJValidator implements ValidatorContract
 
         if (!$valid) {
             $this->error_msg = $this->error_msg ? "<br>". $translate : $translate;
-        }
-        if ($this->error_msg) {
             return false;
         }
         return true;

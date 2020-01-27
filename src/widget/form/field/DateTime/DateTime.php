@@ -5,12 +5,12 @@ namespace Dvi\Component\Widget\Form\Field\DateTime;
 use Adianti\Base\App\Lib\Validator\TDateValidator;
 use Adianti\Base\Lib\Widget\Form\TDateTime;
 use Dvi\Component\Widget\Form\Field\BaseComponentTrait;
-use Dvi\Component\Widget\Form\Field\Contract\FormComponentImputContract;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentEventContract;
 use Dvi\Component\Widget\Form\Field\Contract\FormField;
 use Dvi\Component\Widget\Form\Field\FieldComponent;
 use Dvi\Component\Widget\Form\Field\FormFieldTrait as FormFieldTrait;
 use Dvi\Component\Widget\Form\Field\FormFieldValidationTrait;
-use Dvi\Component\Widget\Form\Field\Input\FormFieldInputImplementation;
+use Dvi\Component\Widget\Form\Field\Input\FormComponentEventImplementation;
 use Dvi\Component\Widget\Form\Field\SearchableField;
 use Dvi\Component\Widget\Form\Field\Validator\DateValidator;
 
@@ -23,13 +23,13 @@ use Dvi\Component\Widget\Form\Field\Validator\DateValidator;
  * @copyright  Copyright (c) 2018. (davimenezes.dev@gmail.com)
  * @link https://github.com/DaviMenezes
  */
-class DateTime extends TDateTime implements FormField, FieldComponent, FormComponentImputContract
+class DateTime extends TDateTime implements FormField, FieldComponent, FormComponentEventContract
 {
     use FormFieldTrait;
     use FormFieldValidationTrait;
     use SearchableField;
     use BaseComponentTrait;
-    use FormFieldInputImplementation;
+    use FormComponentEventImplementation;
 
     /**
      * @var string

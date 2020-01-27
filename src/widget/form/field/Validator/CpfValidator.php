@@ -53,8 +53,6 @@ class CpfValidator implements ValidatorContract
                     $this->error_msg .= "<br>";
                 }
             }
-        }
-        if (isset($this->error_msg)) {
             return false;
         }
         return true;

@@ -7,7 +7,7 @@ namespace Dvi\Component\Widget\Form\Field\Contract;
  * @copyright  Copyright (c) 2019. (davimenezes.dev@gmail.com)
  * @see https://github.com/DaviMenezes
  */
-interface FormComponentImputContract
+interface FormComponentEventContract
 {
-    public function createExitAction(): void;
+    public function createFieldActions(): void;
 }

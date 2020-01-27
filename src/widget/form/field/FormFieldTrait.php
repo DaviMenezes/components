@@ -40,7 +40,7 @@ trait FormFieldTrait
     protected $use_label_field;
     protected $placeholder;
 
-    public function setup(string $label, bool $required = false, int $max_length = null)
+    public function setup(string $label = null, bool $required = false, int $max_length = null)
     {
         $this->setProperty('id', $this->id);
         $this->setProperty('name', $this->getName());
@@ -174,15 +174,6 @@ trait FormFieldTrait
                 $this->showField();
                 return;
             }
-
-            $vbox = new VBox();
-
-            if ($this->error_msg) {
-                $this->showField();
-                return;
-            }
-            $vbox->show();
-            parent::show();
         } catch (\Exception $e) {
             $msg = 'Houve um problema na construção do campo ' . $this->getName();
             if (Environment::isDevelopment()) {

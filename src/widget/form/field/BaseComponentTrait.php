@@ -2,7 +2,7 @@
 
 namespace Dvi\Component\Widget\Form\Field;
 
-use Dvi\Component\Widget\Form\Field\Contract\FormComponentImputContract;
+use Dvi\Component\Widget\Form\Field\Contract\FormComponentEventContract;
 
 /**
  *  BaseComponentTrait
@@ -19,7 +19,7 @@ trait BaseComponentTrait
 
     public function showView()
     {
-        $this->createActions();
+        $this->checkIfCanCreateActions();
 
         $this->prepareParams();
 
@@ -30,6 +30,7 @@ trait BaseComponentTrait
     public function prepareParams()
     {
         $this->params = $this->prepareViewParams();
+        $this->setProperty('value', $this->value);
 
         $this->properties = collect($this->properties)->merge($this->tag->getProperties())->all();
 
@@ -51,6 +52,8 @@ trait BaseComponentTrait
         $this->params['field_info'] = $this->getFieldInfoValidationErrorData($this->getLabel());
 
         $this->getViewCustomParameters();
+
+        $this->params = collect($this->params)->filter()->all();
     }
 
     public function clearExtraParams(array $properties, &$params)
@@ -60,6 +63,7 @@ trait BaseComponentTrait
                 unset($params[$property]);
             }
         }
+        $params = collect($params)->filter()->all();
     }
 
     protected function preparePropertyValues(): array
@@ -95,12 +99,12 @@ trait BaseComponentTrait
         $this->html = $this->getView($this->params);
     }
 
-    protected function createActions(): void
+    protected function checkIfCanCreateActions(): void
     {
         $interfaces = class_implements(self::class);
-        if (!collect($interfaces)->has(FormComponentImputContract::class)) {
+        if (!collect($interfaces)->has(FormComponentEventContract::class)) {
             return;
         }
-        $this->createExitAction();
+        $this->createFieldActions();
     }
 }
